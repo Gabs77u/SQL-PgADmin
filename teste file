@@ -1,0 +1,37 @@
+CREATE TABLE aula.disciplina(
+    codigo integer PRIMARY KEY,
+	nomke character varying (70)
+);
+CREATE TABLE aula.curso(
+    codigo integer PRIMARY KEY,
+	nomke character varying (70)
+);
+
+CREATE TABLE aula.curriculo(
+    codd integer,
+    codc integer,
+    obgr integer,
+    foreign key (codd) REFERENCES aula.disciplina (codigo),
+	foreign key (codc) REFERENCES aula.disciplina (codigo)
+);
+
+INSERT INTO aula.disciplina(codigo,nomke)VALUES(1,'CDI');
+INSERT INTO aula.disciplina(codigo,nomke)VALUES(2,'FSA');
+INSERT INTO aula.disciplina(codigo,nomke)VALUES(3,'Historia');
+INSERT INTO aula.disciplina(codigo,nomke)VALUES(4,'Sexologia');
+
+SELECT *
+FROM aula.disciplina;
+UPDATE aula.disciplina
+SET nomke = 'calculo'
+WHERE codigo = 4
+
+INSERT INTO aula.curso(codigo,nomke)VALUES(1,'Calculo');
+INSERT INTO aula.curso(codigo,nomke)VALUES(2,'Direito');
+INSERT INTO aula.curso(codigo,nomke)VALUES(3,'Medicina');
+INSERT INTO aula.curso(codigo,nomke)VALUES(4,'Fisica');
+
+INSERT INTO aula.curriculo(codd,codc,obgr)VALUES(1,1,1);
+INSERT INTO aula.curriculo(codd,codc,obgr)VALUES(2,1,0);
+INSERT INTO aula.curriculo(codd,codc,obgr)VALUES(4,2,1);
+INSERT INTO aula.curriculo(codd,codc,obgr)VALUES(4,3,1);
