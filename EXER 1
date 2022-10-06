@@ -1,0 +1,21 @@
+CREATE TABLE viagem.ciaaerea(
+    codciaaerea INTEGER PRIMARY KEY,
+	nomeciaaerea VARCHAR (255)
+);
+
+INSERT INTO (nomeciaaerea) VALUES ('Infinity Airlines');
+
+CREATE TABLE viagem.cidade(
+    codcidade INTEGER PRIMARY KEY,
+	nomecidade VARCHAR (255)
+);
+
+CREATE TABLE viagem.destino(
+	coddestino INTEGER PRIMARY KEY,
+	nomedestino VARCHAR (255)
+);
+
+CREATE TABLE viagem.trajeto(
+
+
+);
