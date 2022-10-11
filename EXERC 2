@@ -1,0 +1,47 @@
+CREATE TABLE Professores 
+( 
+ Telefone CHAR(9),  
+ Nome CHARACTER,  
+ Matricula CHAR(255),  
+ Email CHARATCER(50),  
+ Codigo CHAR (255) PRIMARY KEY,  
+ CPF CHAR(11),  
+); 
+
+CREATE TABLE Alunos 
+( 
+ Nome CHARACTER,  
+ Matricula CHAR(255),  
+ Email CHARACTER(50),  
+ Telefone CHAR(9),  
+ Codigo CHAR (255)PRIMARY KEY,  
+); 
+
+CREATE TABLE Externos 
+( 
+ Empresários INT,
+ Profissionais INT,
+ Codigo CHAR(255) AUTO_INCREMENT,  
+ Nome CHARACTER,  
+); 
+
+CREATE TABLE Turmas 
+( 
+ Número CHAR(2),  
+ Codigo CHAR(255) PRIMARY KEY,    
+ idTurmas CHARACTER(1),  
+); 
+
+CREATE TABLE Comun Cien 
+( 
+ Codigo CHAR(255) NOT NULL DEFAULT,  
+ idProfessores INT,  
+ idAlunos INT,  
+ CHECK (Codigo LIKE '%undefined%')
+); 
+
+ALTER TABLE Turmas ADD FOREIGN KEY(Codigo) REFERENCES Professores (Codigo)
+ALTER TABLE Turmas ADD FOREIGN KEY(Codigo) REFERENCES Alunos (Codigo)
+ALTER TABLE Turmas ADD FOREIGN KEY(idTurmas) REFERENCES Turmas (idTurmas)
+ALTER TABLE Comun Cien ADD FOREIGN KEY(idProfessores) REFERENCES Professores (idProfessores)
+ALTER TABLE Comun Cien ADD FOREIGN KEY(idAlunos) REFERENCES Alunos (idAlunos)
