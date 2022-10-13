@@ -1,0 +1,64 @@
+CREATE TABLE Comun_Academica (
+    Alunos VARCHAR,
+    RGM INTEGER PRIMARY KEY,
+    Professores VARCHAR
+);
+
+INSERT INTO comun_academica(nomke,codigo)Values(1,'professores');
+INSERT INTO comun_academica(nomke,codigo)Values(2,'alunos');
+INSERT INTO comun_academica(nomke,codigo)Values(3,'professores palestrantes');
+INSERT INTO comun_academica(nomke,codigo)Values(4,'alunos palestrantes');
+
+SELECT *
+FROM comun_academica;
+UPDATE comun_academica;
+SET nomke= 'codigo'
+WHERE codigo = 9
+
+
+CREATE TABLE Comun_Cientif (
+    Empresarios VARCHAR,
+    Profissionais VARCHAR,
+    CPF INTEGER PRIMARY KEY,
+    data_insricao DATE
+);
+
+INSERT INTO comun_cientif(nomke,codigo)VALUES(1,'empresarios');
+INSERT INTO comun_cientif(nomke,codigo)VALUES(2,'profissionais');
+INSERT INTO comun_cientif(nomke,codigo)VALUES(3,'investidores');
+INSERT INTO comun_cientif(nomke,codigo)VALUES(4,'estudiosos');
+INSERT INTO comun_cientif(nomke,codigo)VALUES(5,'comunidade');
+
+CREATE TABLE Credenciamento (
+    id_participante INTEGER PRIMARY KEY,
+    Publico CHAR,
+    Palestrante VARCHAR,
+    data_presenca DATE
+);
+
+INSERT INTO credenciamento(nomke,codigo)VALUES(1,'sim');
+INSERT INTO credenciamento(nomke,codigo)Values(2,'nao');
+
+CREATE TABLE Inscricao_Participantes_Comun_Cientif_Credenciamento_UDF (
+    fk_Comun_Cientif_CPF INTEGER,
+    fk_Credenciamento_id_participante INTEGER,
+    fk_UDF_id_instituicao INTEGER
+);
+
+CREATE TABLE UDF (
+    id_instituicao INTEGER PRIMARY KEY,
+    turmas DECIMAL,
+    curso VARCHAR
+);
+ 
+ALTER TABLE Inscricao_Participantes_Comun_Cientif_Credenciamento_UDF ADD CONSTRAINT FK_Inscricao_Participantes_Comun_Cientif_Credenciamento_UDF_1
+    FOREIGN KEY (fk_Comun_Cientif_CPF)
+    REFERENCES Comun_Cientif (CPF);
+ 
+ALTER TABLE Inscricao_Participantes_Comun_Cientif_Credenciamento_UDF ADD CONSTRAINT FK_Inscricao_Participantes_Comun_Cientif_Credenciamento_UDF_2
+    FOREIGN KEY (fk_Credenciamento_id_participante)
+    REFERENCES Credenciamento (id_participante);
+ 
+ALTER TABLE Inscricao_Participantes_Comun_Cientif_Credenciamento_UDF ADD CONSTRAINT FK_Inscricao_Participantes_Comun_Cientif_Credenciamento_UDF_3
+    FOREIGN KEY (fk_UDF_id_instituicao)
+    REFERENCES UDF (id_instituicao);
